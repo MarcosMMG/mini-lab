@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    container_name: mini_ai_lab_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - lab_data:/data
+
+  frontend:
+    image: nginx:alpine
+    container_name: mini_ai_lab_frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+
+volumes:
+  lab_data:

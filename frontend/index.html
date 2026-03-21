@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Mini AI-Native Dev Lab</title>
+ <link rel="stylesheet" href="./style.css" />
+ </head>
+ <body>
+ <header class="container">
+ <h1>Mini AI-Native Dev Lab</h1>
+ <p>
+ Laboratório local full stack com frontend, backend, API, banco,
+Docker,
+ Git e apoio de agente de IA no editor.
+ </p>
+ </header>
+ <main class="container">
+ <section class="card">
+ <h2>Serviços do laboratório</h2>
+ <ul>
+ <li>Frontend estático em Nginx</li>
+ <li>Backend em FastAPI</li>
+ <li>Banco local em SQLite</li>
+ <li>Orquestração com Docker Compose</li>
+ </ul>
+ <button id="load-projects-btn" type="button">Carregar
+projetos</button>
+ </section>
+ <section class="card">
+ <h2>Projetos carregados da API</h2>
+ <div id="status-box">Aguardando carregamento...</div>
+ <ul id="project-list"></ul>
+ </section>
+ </main>
+ <footer class="container">
+ <p>ETAPA 1 - Preparação do Ambiente</p>
+ </footer>
+ <script src="./app.js"></script>
+ </body>
+</html>
