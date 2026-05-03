@@ -3,38 +3,53 @@
  <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Mini AI-Native Dev Lab</title>
+ <title>Painel de Demandas e Ações</title>
  <link rel="stylesheet" href="./style.css" />
  </head>
  <body>
  <header class="container">
- <h1>Mini AI-Native Dev Lab</h1>
+ <h1>Painel de Demandas e Ações</h1>
  <p>
- Laboratório local full stack com frontend, backend, API, banco,
-Docker,
- Git e apoio de agente de IA no editor.
+ Base comum do projeto de extensão: cadastro, acompanhamento e resumo de
+demandas.
  </p>
  </header>
  <main class="container">
  <section class="card">
- <h2>Serviços do laboratório</h2>
- <ul>
- <li>Frontend estático em Nginx</li>
- <li>Backend em FastAPI</li>
- <li>Banco local em SQLite</li>
- <li>Orquestração com Docker Compose</li>
- </ul>
- <button id="load-projects-btn" type="button">Carregar
-projetos</button>
+ <h2>Cadastrar demanda</h2>
+ <form id="demand-form">
+ <label for="title">Título</label>
+ <input id="title" name="title" type="text" required />
+ <label for="category">Categoria</label>
+ <input id="category" name="category" type="text" required />
+ <label for="description">Descrição</label>
+ <textarea id="description" name="description" required></textarea>
+ <label for="status">Status</label>
+ <select id="status" name="status" required>
+ <option value="pendente">Pendente</option>
+ <option value="em andamento">Em andamento</option>
+ <option value="concluída">Concluída</option>
+ </select>
+ <label for="owner">Responsável</label>
+ <input id="owner" name="owner" type="text" required />
+ <label for="created_at">Data</label>
+ <input id="created_at" name="created_at" type="date" required />
+ <button type="submit">Salvar demanda</button>
+ </form>
  </section>
  <section class="card">
- <h2>Projetos carregados da API</h2>
+ <h2>Resumo</h2>
+ <div id="summary-box">Carregue os dados para visualizar o resumo.</div>
+ </section>
+ <section class="card">
+ <h2>Demandas cadastradas</h2>
+ <button id="load-demands-btn" type="button">Carregar demandas</button>
  <div id="status-box">Aguardando carregamento...</div>
- <ul id="project-list"></ul>
+ <ul id="demand-list"></ul>
  </section>
  </main>
  <footer class="container">
- <p>ETAPA 1 - Preparação do Ambiente</p>
+ <p>ETAPA 2 - Plano de Ação em Prática</p>
  </footer>
  <script src="./app.js"></script>
  </body>

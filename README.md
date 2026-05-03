@@ -8,3 +8,24 @@ docker compose up --build
 Frontend: http://localhost:8080
 API: http://localhost:8000/projects
 Docs da API: http://localhost:8000/docs
+
+# Painel de Demandas e Ações
+## Objetivo
+
+Sistema base da disciplina Projeto de Extensão em Software Full Stack.
+## Funcionalidades
+- cadastrar demandas
+- listar demandas
+- excluir demandas
+- exibir resumo por status
+## Tecnologias
+- FastAPI
+- SQLite
+- HTML
+- CSS
+- JavaScript
+- Docker
+- Docker Compose
+- Git
+## Como executar
+docker compose up –build
