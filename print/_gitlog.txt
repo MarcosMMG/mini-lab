@@ -1,8 +1,0 @@
-0dc1410 especializa sistema para atendimento
-21d3c06 integra eventos ao frontend
-fc0353d implementa rota post event
-6f98823 adiciona tabela de eventos
-3fd857e Atualiza a referência do script app.js para incluir um parâmetro de versão, garantindo que a versão mais recente do arquivo seja carregada no frontend.
-9278312 Implementa a API do Painel de Demandas e Ações com rotas para gerenciar demandas, incluindo criação, atualização, exclusão e resumo. Adiciona documentação de arquitetura e atualiza o README com informações sobre o sistema. O frontend é ajustado para interagir com a nova API.
-66257a0 Atualiza e finaliza a documentação de arquitetura do projeto, descrevendo a estrutura do frontend, backend, banco de dados e Docker.
-be7b5b3 Primeiro passo
