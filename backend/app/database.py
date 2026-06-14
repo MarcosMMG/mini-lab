@@ -26,6 +26,17 @@ def init_db():
             )
             """
         )
+        connection.execute(
+            """
+            CREATE TABLE IF NOT EXISTS events (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                source TEXT NOT NULL,
+                type TEXT NOT NULL,
+                value TEXT NOT NULL,
+                created_at TEXT NOT NULL
+            )
+            """
+        )
         count = connection.execute("SELECT COUNT(*) FROM demands").fetchone()[0]
         if count == 0:
             connection.executemany(
@@ -35,25 +46,25 @@ def init_db():
                 """,
                 [
                     (
-                        "Organizar evento comunitario",
-                        "Comunidade",
-                        "Planejar local, divulgacao e equipe de apoio",
+                        "Responder solicitacao de cliente",
+                        "Solicitação",
+                        "Cliente pediu segunda via de boleto pelo formulario web",
                         "pendente",
                         "Marina",
                         "2026-04-11",
                     ),
                     (
-                        "Cadastrar voluntarios",
-                        "ONG",
-                        "Registrar nome, contato e area de interesse",
+                        "Tratar reclamacao de atendimento",
+                        "Reclamação",
+                        "Cliente relatou demora no retorno do suporte",
                         "em andamento",
                         "Carlos",
                         "2026-04-11",
                     ),
                     (
-                        "Atualizar agenda escolar",
-                        "Educacao",
-                        "Publicar calendario com atividades do mes",
+                        "Esclarecer duvida sobre servico",
+                        "Suporte",
+                        "Cliente perguntou sobre horarios de funcionamento",
                         "concluída",
                         "Luciana",
                         "2026-04-11",
@@ -122,6 +133,44 @@ def delete_demand(demand_id):
             (demand_id,),
         )
         connection.commit()
+
+
+def get_event_by_id(event_id: int):
+    with get_connection() as connection:
+        row = connection.execute(
+            """
+            SELECT id, source, type, value, created_at
+            FROM events
+            WHERE id = ?
+            """,
+            (event_id,),
+        ).fetchone()
+    return dict(row) if row else None
+
+
+def create_event(source, type, value, created_at):
+    with get_connection() as connection:
+        cursor = connection.execute(
+            """
+            INSERT INTO events (source, type, value, created_at)
+            VALUES (?, ?, ?, ?)
+            """,
+            (source, type, value, created_at),
+        )
+        connection.commit()
+    return get_event_by_id(cursor.lastrowid)
+
+
+def list_events():
+    with get_connection() as connection:
+        rows = connection.execute(
+            """
+            SELECT id, source, type, value, created_at
+            FROM events
+            ORDER BY id
+            """
+        ).fetchall()
+    return [dict(row) for row in rows]
 
 
 def get_summary():
