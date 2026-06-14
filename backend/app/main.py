@@ -8,14 +8,16 @@ from app.database import (
     create_demand,
     update_demand,
     delete_demand,
+    create_event,
+    list_events,
 )
-from app.schemas import DemandCreate, DemandUpdate
-from app.services import build_summary, normalize_status
+from app.schemas import DemandCreate, DemandUpdate, EventCreate
+from app.services import build_summary, normalize_status, convert_event_to_demand
 
 app = FastAPI(
-    title="Painel de Demandas e Ações API",
-    description="API da base comum do projeto de extensão",
-    version="2.0.0",
+    title="Controle de Atendimentos API",
+    description="API de atendimento orientada a eventos (Etapa 3)",
+    version="3.0.0",
 )
 app.add_middleware(
     CORSMiddleware,
@@ -83,3 +85,34 @@ def delete_demand_route(demand_id: int):
         raise HTTPException(status_code=404, detail="Demanda não encontrada.")
     delete_demand(demand_id)
     return {"message": "Demanda removida com sucesso."}
+
+
+@app.get("/events")
+def get_events():
+    return {"events": list_events()}
+
+
+@app.post("/event")
+def receive_event(event: EventCreate):
+    saved_event = create_event(
+        source=event.source,
+        type=event.type,
+        value=event.value,
+        created_at=event.created_at,
+    )
+    demand_data = convert_event_to_demand(saved_event)
+    new_demand = create_demand(
+        title=demand_data["title"],
+        category=demand_data["category"],
+        description=demand_data["description"],
+        status=normalize_status(demand_data["status"]),
+        owner=demand_data["owner"],
+        created_at=demand_data["created_at"],
+    )
+    return {
+        "message": "Evento recebido e demanda gerada com sucesso.",
+        "event": saved_event,
+        "demand": new_demand,
+    }
+
+
