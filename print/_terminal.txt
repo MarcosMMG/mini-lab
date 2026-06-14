@@ -1,0 +1,67 @@
+ Image mini-lab-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 549B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 252B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 465B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/python:3.12-slim@sha256:d764629ce0ddd8c71fd371e9901efb324a95789d2315a47db7e4d27e78f1b0e9
+#6 resolve docker.io/library/python:3.12-slim@sha256:d764629ce0ddd8c71fd371e9901efb324a95789d2315a47db7e4d27e78f1b0e9 0.0s done
+#6 DONE 0.0s
+
+#7 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+#7 CACHED
+
+#8 [2/5] WORKDIR /app
+#8 CACHED
+
+#9 [3/5] COPY requirements.txt .
+#9 CACHED
+
+#10 [5/5] COPY app ./app
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 exporting manifest sha256:83a3656fbcfbb9eb8dbca9eef228cec643b0c3ff14e6398737f44608e3b83cc4 done
+#11 exporting config sha256:bed3513669680f7d9fcd01af83ade27e3e593e01117e54023ca5cc8386e72fda done
+#11 exporting attestation manifest sha256:cfcef92fe452ca3e83b3ccee56e67e28ee9daabce6dac67eeedef3fb4722e6a4 0.0s done
+#11 exporting manifest list sha256:ca1f7c8d1316673a33f15e37cc1046f5e276ae4ef10acebec02e91047202892f
+#11 exporting manifest list sha256:ca1f7c8d1316673a33f15e37cc1046f5e276ae4ef10acebec02e91047202892f 0.0s done
+#11 naming to docker.io/library/mini-lab-backend:latest done
+#11 unpacking to docker.io/library/mini-lab-backend:latest 0.0s done
+#11 DONE 0.1s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image mini-lab-backend Built 
+ Container mini_ai_lab_backend Recreate 
+ Container mini_ai_lab_backend Recreated 
+ Container mini_ai_lab_frontend Running 
+Attaching to mini_ai_lab_backend, mini_ai_lab_frontend
+ Container mini_ai_lab_backend Starting 
+ Container mini_ai_lab_backend Started 
+mini_ai_lab_backend  | INFO:     Started server process [1]
+mini_ai_lab_backend  | INFO:     Waiting for application startup.
+mini_ai_lab_backend  | INFO:     Application startup complete.
+mini_ai_lab_backend  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+mini_ai_lab_backend  | INFO:     172.18.0.1:45492 - "GET /health HTTP/1.1" 200 OK
+mini_ai_lab_backend  | INFO:     172.18.0.1:44522 - "GET /health HTTP/1.1" 200 OK
+mini_ai_lab_backend  | INFO:     172.18.0.1:44526 - "GET /demands HTTP/1.1" 200 OK
+mini_ai_lab_backend  | INFO:     172.18.0.1:44532 - "GET /events HTTP/1.1" 200 OK
+mini_ai_lab_backend  | INFO:     172.18.0.1:44536 - "GET /docs HTTP/1.1" 200 OK
+mini_ai_lab_frontend  | 172.18.0.1 - - [14/Jun/2026:15:01:24 +0000] "GET / HTTP/1.1" 200 2238 "-" "curl/8.18.0" "-"
+mini_ai_lab_backend   | INFO:     172.18.0.1:51900 - "GET /health HTTP/1.1" 200 OK
