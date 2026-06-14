@@ -3,15 +3,15 @@
  <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Painel de Demandas e Ações</title>
+ <title>Controle de Atendimentos</title>
  <link rel="stylesheet" href="./style.css" />
  </head>
  <body>
  <header class="container">
- <h1>Painel de Demandas e Ações</h1>
+ <h1>Controle de Atendimentos</h1>
  <p>
- Base comum do projeto de extensão: cadastro, acompanhamento e resumo de
-demandas.
+ Sistema de atendimento orientado a eventos: cadastro manual, eventos
+externos e geração automática de demandas.
  </p>
  </header>
  <main class="container">
@@ -21,7 +21,11 @@ demandas.
  <label for="title">Título</label>
  <input id="title" name="title" type="text" required />
  <label for="category">Categoria</label>
- <input id="category" name="category" type="text" required />
+ <select id="category" name="category" required>
+ <option value="Suporte">Suporte</option>
+ <option value="Reclamação">Reclamação</option>
+ <option value="Solicitação">Solicitação</option>
+ </select>
  <label for="description">Descrição</label>
  <textarea id="description" name="description" required></textarea>
  <label for="status">Status</label>
@@ -43,14 +47,19 @@ demandas.
  </section>
  <section class="card">
  <h2>Demandas cadastradas</h2>
- <button id="load-demands-btn" type="button">Carregar demandas</button>
+ <button id="load-demands-btn" type="button">Carregar dados</button>
  <div id="status-box">Aguardando carregamento...</div>
  <ul id="demand-list"></ul>
  </section>
+ <section class="card">
+ <h2>Eventos Recebidos</h2>
+ <div id="event-status-box">Aguardando carregamento...</div>
+ <ul id="event-list"></ul>
+ </section>
  </main>
  <footer class="container">
- <p>ETAPA 2 - Plano de Ação em Prática</p>
+ <p>ETAPA 3 - Controle de Atendimentos orientado a eventos</p>
  </footer>
- <script src="./app.js?v=2"></script>
+ <script src="./app.js?v=3"></script>
  </body>
 </html>
